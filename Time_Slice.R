@@ -15,10 +15,6 @@ source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridt.r"
 source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readgrads.r")
 
 ### Building the function ###########################################################################
-
-## Temporarly setting a working directory for the SM data
-#setwd("~/Documents/R Scripts/SnowModel/Output File Scripts/Example_Data/MRB_Singel_Cell")
-
 Time_Slice <- function(filepath="snowpack.ctl",variable="swed",timestep){
   snowpack.info <- readctl(filepath)                      # Reading snowpack
   names <- snowpack.info$varname                          # Loading the variable names

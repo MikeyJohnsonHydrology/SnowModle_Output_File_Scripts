@@ -39,4 +39,4 @@ Single_Cell_Timeseries <- function(filepath="snowpack.ctl", x=1, y=1){
 }
 
 ### Example of how to run the function #########################
-# df <- Single_Cell_Timeseries(filepath="snowpack.ctl", x=1, y=1)
+# test <- Single_Cell_Timeseries(filepath="snowpack.ctl", x=1, y=1)
