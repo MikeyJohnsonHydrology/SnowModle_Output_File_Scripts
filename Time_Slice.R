@@ -4,15 +4,15 @@
 ### This function creats a matrix of the entire SnowModel extent for a specifice time step and vairable
 ### 
 ### Written by: Mikey Johnson, University of Nevada Reno, < mikeyj@nevada.unr.edu >
-### last eddited January 24, 2020
+### last edited January 24, 2020
 #####################################################################################################
 
 ### Sourcing functions to read .grad files ##########################################################
 # this code sources the files from Marcos Longo's GitHub page
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readctl.r")
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridp.r")
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridt.r")
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readgrads.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readctl.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridp.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridt.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readgrads.r")
 
 ### Building the function ###########################################################################
 Time_Slice <- function(filepath="snowpack.ctl",variable="swed",timestep){

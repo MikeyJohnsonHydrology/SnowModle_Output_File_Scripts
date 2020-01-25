@@ -4,15 +4,15 @@
 ### This function organizes a timeseries of all the variables in a .grads file from SnowModel.
 ### 
 ### Written by: Mikey Johnson, University of Nevada Reno, < mikeyj@nevada.unr.edu >
-### last eddited January 24, 2020
+### last edited January 24, 2020
 #####################################################################################################
 
 ### Sourcing functions to read .grad files ##########################################################
 # this code sources the files from Marcos Longo's GitHub page
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readctl.r")
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridp.r")
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridt.r")
-source_url("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readgrads.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readctl.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridp.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/gridt.r")
+source("https://raw.githubusercontent.com/mpaiao/ED2/master/R-utils/readgrads.r")
 
 ### Building the function ###########################################################################
 Single_Cell_Timeseries <- function(filepath="snowpack.ctl", x=1, y=1){
