@@ -27,38 +27,61 @@ library(cowplot)    # publication-ready plots
 library(devtools)   # developer tools, simplifying tasks
 library(raster)     # raster manipulation
 
-### Setting the source file location
+### Setting the source file location #############################################################
 sfl <- dirname(rstudioapi::getActiveDocumentContext()$path)  # this is the source file location of R-SnowModel.R
 setwd(sfl)
 
+### setting cube dimensions, assuming that all the files above come from the SnowModel run ###
+x_max = 1121                                 # <-------------- change this different grid size
+y_max = 759                                  # <-------------- change this different grid size
+z_max = 366                                  # <-------------- change this different grid size
 
-### Run read_SnowModle_swed.m
+
+### dates and day of year ###
+dates <-as.Date("2015-10-01") + 0:(z_max-1)    # <-------------- change this start date for different dates
+day_of_water_year <- 1:z_max
+
+
+### Run read_SnowModle_swed.m ####################################################################
 system(deparse(substitute(`/Applications/MATLAB_R2019b.app/bin/matlab -nodisplay -r "run('read_SnowModel_swed.m');exit;"`)))
 
 
-### Run read_SnowModel_slice_swed.m
+### Run read_SnowModel_slice_swed.m ##############################################################
 # Select day
-
+day <- 170 # April 1
 
 # Run matlab code
 system(deparse(substitute(`/Applications/MATLAB_R2019b.app/bin/matlab -nodisplay -r "run('read_SnowModel_slice_swed.m');exit;"`)))
 
 # Read slice file
+time_slice <- read.table("swed Time Slice Files/swed_slice_175.txt", header=F)
 
 
-### Run read_SnowModel_time_series_swed.m
+### Run read_SnowModel_time_series_swed.m ########################################################
 # Select cell x,y
+point <- c(10,10) # dimetions from the lower left corner
 
 # Run matlab code
+system(deparse(substitute(`/Applications/MATLAB_R2019b.app/bin/matlab -nodisplay -r "run('read_SnowModel_time_series_swed.m');exit;"`)))
 
-# Read slice file
+# Read time series file
+time_series_swed <- read.delim("~/Desktop/swed_test_read/swed Singel-cell Time Series Files/swed_singel-cell_10,10.txt", header=FALSE)[1]
+names(time_series_swed) <- c("SWE (m)")
 
 
-### Run read_SnowModel_save_data_swed.m (Note: This take a long time to run)
+### Run read_SnowModel_save_data_swed.m (Note: This take a long time to run) #####################
 # Run Matlab code
-system(deparse(substitute(`/Applications/MATLAB_R2019b.app/bin/matlab -nodisplay -r "run('read_SnowModel_save_data_swed.m');exit;"`)))
+system(deparse(substitute(`/Applications/MATLAB_R2019b.app/bin/matlab -nodisplay -r "run('read_SnowModel_data_cube_save_swed.m');exit;"`)))
 
 # Read Data Cube
+SWED_Files <- list.files("swed Data Cube Files")
+SWED_Files <- SWED_Files[order(nchar(SWED_Files), SWED_Files)]
+
+SWED_data_cube <- array(rep(NA,y_max*x_max*z_max), c(y_max,x_max,z_max))
+
+for(i in 1:z_max){
+  SWED_data_cube[,,i] <- as.matrix(read.table(paste0("swed Data Cube Files/",SWED_Files[i]), header=FALSE))
+}
 
 
 

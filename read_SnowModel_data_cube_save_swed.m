@@ -1,5 +1,5 @@
-% Simple script to save SnowModel .gdat data as singel-cell time series 
-% .txt files for a specified varable of intrest.
+% Simple script to save SnowModel .gdat data as .txt files for a specified
+% varable of intrest.
 %
 % Adapted from readSnowModel.m
 % Adapted from Ryan Crumley's plot_SWED_video.m script mainly
@@ -9,7 +9,7 @@
 % See also a second function readXY below that outputs a vector of Z values for 
 % a particular coordinate pair (useful for comparing to met data or depth obs!)
 %
-% Every .txt saved corosponds to an entire time series for a singel cell
+% Every .txt saved corosponds to the model time step 
 
 % Select the start date of the model run
 startdate=[2015,10,1];
@@ -26,12 +26,7 @@ nx=1121; %See XDEF in .ctl file
 ny=759;  %See YDEF in .ctl file
 cell=100; %This is the size of the cell in meters
 
-pointx = 10 % cell of intrest x value
-pointy = 10 % cell of intrest y value
-
 [X,Y,Z,timevec,xmax,ymax] = readGDAT(startdate,timesteps,ctl_file,var_name,xll,yll,nx,ny,cell);
-
-SCTS = squeeze(Z(pointx,pointy,:)); % Extraction the time series
 
 % Mikey's code to save the data to .txt files
 %
@@ -44,12 +39,15 @@ SCTS = squeeze(Z(pointx,pointy,:)); % Extraction the time series
 %
 
 % Make a new folder to save the data
-folder_name = strcat(var_name,' singel-cell time series files');
+folder_name = strcat(var_name,' Data Cube Files')
 mkdir(folder_name)
 
 % Save data into the new folder
-file_name = strcat(folder_name,'/',var_name,'_singel-cell_',num2str(pointx),',',num2str(pointy),'.txt')
-save(file_name, 'SCTS', '-ascii', '-double', '-tabs')
+for i = 1:timesteps
+file_name = strcat(folder_name,'/',var_name,'_',num2str(i),'.txt')
+Time_Slice = Z(:,:,i);
+save(file_name, 'Time_Slice', '-ascii', '-double', '-tabs')
+end
 % End Mikey's Code
 
 

@@ -40,7 +40,7 @@ slice_timestep = [175]; % April 1, 2015, This is a vector of all the time steps 
 %
 
 % Make a new folder to save the data
-folder_name = strcat(var_name,' Slice File');
+folder_name = strcat(var_name,' Time Slice Files');
 mkdir(folder_name)
 
 % Save data into the new folder
