@@ -28,7 +28,7 @@ library(devtools)   # developer tools, simplifying tasks
 library(raster)     # raster manipulation
 
 ### Setting the source file location #############################################################
-sfl <- dirname(rstudioapi::getActiveDocumentContext()$path)  # this is the source file location of R-SnowModel.R
+sfl <- dirname(rstudioapi::getActiveDocumentContext()$path)  # this is the source file location
 setwd(sfl)
 
 ### setting cube dimensions, assuming that all the files above come from the SnowModel run ###
@@ -89,7 +89,7 @@ for(i in 1:z_max){
 
 
 ### Test code to Run a Matlab script
-sfl <- dirname(rstudioapi::getActiveDocumentContext()$path)  # this is the source file location of R-SnowModel.R
+sfl <- dirname(rstudioapi::getActiveDocumentContext()$path)  # this is the source file location
 setwd(sfl)
 
 # Test code to run MATLAB
