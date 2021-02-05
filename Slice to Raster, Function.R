@@ -4,7 +4,7 @@
 ### This code turns a SnowModel times slice (2D matrix) to a raster (.tiff)
 ### 
 ### Code By: Mikey Johnosn, mikeyj@nevada.unr.edu
-### Last Edited: April 21, 2020
+### Last Edited: Feb 4, 2021
 #####################################################################################################
 
 ### Loading Libraries ###############################################################################
