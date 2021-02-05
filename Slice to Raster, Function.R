@@ -56,4 +56,4 @@ slice_to_raster <- function(slice = matrix(runif(1121*759),759,1121),           
 #setwd(paste(sfl,"Example_Data","Test_Save_Raster", sep="/"))
 #April_1_Slice <- read.table("Time_Slice.txt", header=FALSE)
 #test <- slice_to_raster(slice = April_1_Slice)
-#plot(test) 
+#plot(test)
