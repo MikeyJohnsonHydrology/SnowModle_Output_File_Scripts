@@ -20,7 +20,7 @@ slice_to_raster <- function(slice = matrix(runif(1121*759),759,1121),           
                             flip_slice_y=FALSE
                             ){
   ### Fliping the slice about the y-axes if true
-  if(flip_slice==TRUE){
+  if(flip_slice_y==TRUE){
     Slice <- as.matrix(slice)
     Slice <- apply(Slice, 2, rev)
   } else {
