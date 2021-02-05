@@ -16,11 +16,16 @@ slice_to_raster <- function(slice = matrix(runif(1121*759),759,1121),           
                             cell_size = 100,
                             llc_x = 489747,
                             llc_y = 4853924,
-                            crs_string="+proj=utm +zone=10 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+                            crs_string="+proj=utm +zone=10 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
+                            flip_slice_y=FALSE
                             ){
-  ### Fliping the slice about the y-axes
-  Slice <- as.matrix(slice)
-  Slice <- apply(Slice, 2, rev)  
+  ### Fliping the slice about the y-axes if true
+  if(flip_slice==TRUE){
+    Slice <- as.matrix(slice)
+    Slice <- apply(Slice, 2, rev)
+  } else {
+    Slice=slice
+  }
 
   nx = as.numeric(ncol(Slice))
   ny = as.numeric(nrow(Slice))
