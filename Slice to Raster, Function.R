@@ -24,7 +24,7 @@ slice_to_raster <- function(slice = matrix(runif(1121*759),759,1121),           
     Slice <- as.matrix(slice)
     Slice <- apply(Slice, 2, rev)
   } else {
-    Slice=slice
+    Slice=as.matrix(slice)
   }
 
   nx = as.numeric(ncol(Slice))
